@@ -1,0 +1,262 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: white;
+}
+
+body {
+    background-image: linear-gradient(to right bottom, rgb(142, 11, 24), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    min-width: 720px;
+    font-size: 14px;
+}
+
+#nowPlayingBarContainer {
+    width: 100%;
+    min-width: 620px;
+    background-color: rgb(50, 50, 50);
+    position: fixed;
+    bottom: 0;
+}
+
+#nowPlayingBar {
+    display: flex;
+    height: 90px;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+#nowPlayingBar .content {
+    width: 100%;
+}
+
+.playerControls .buttons {
+    margin: 0 auto;
+    display: table;
+}
+
+#left,
+#right {
+    width: 30%;
+    min-width: 180px;
+}
+
+#right {
+    position: relative;
+    margin-top: 16px;
+}
+
+#middle {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons .controlButton {
+    background-color: transparent;
+    vertical-align: middle;
+    border: none;
+}
+
+.controlButton img {
+    width: 20px;
+    height: 20px;
+}
+
+.controlButton:hover {
+    cursor: pointer;
+}
+
+.controlButton.play img,
+.controlButton.pause {
+    width: 30px;
+    height: 30px;
+}
+
+.playbackBar .progressBar {
+    height: 6px;
+    display: inline-flex;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.playbackBar {
+    display: flex;
+}
+
+.playbackBar .progressTime.current,
+.progressTime.remaining {
+    color: white;
+    font-size: 12px;
+    min-width: 40px;
+    text-align: center;
+}
+
+.playbackBar .progressBar .progressBarBackground {
+    background-color: rgb(70, 70, 70);
+    width: 100%;
+    border-radius: 2px;
+}
+
+.progress {
+    background-color: white;
+    border-radius: 2px;
+    width: 0%;
+    height: 6px;
+}
+
+.albumLink img {
+    height: 100%;
+    min-width: 57px;
+    margin-right: 15px;
+    float: left;
+}
+
+.trackInfo {
+    display: table;
+    margin-top: 7px;
+}
+
+.trackInfo .artistName {
+    color: grey;
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+}
+
+.trackInfo .trackName span {
+    color: white;
+    margin: 6px 0;
+    font-size: 21px;
+}
+
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.volumeBar .controlButton {
+    background-color: transparent;
+    vertical-align: middle;
+    border: none;
+}
+
+.volumeBar {
+    width: 180px;
+    position: absolute;
+    right: 0;
+}
+
+.volumeBar .progressBar {
+    cursor: pointer;
+    display: inline-flex;
+    height: 9px;
+    width: 125px;
+}
+
+.volumeBar .progressBar .progressBarBackground {
+    background-color: rgb(70, 70, 70);
+    border-radius: 2px;
+    width: 180px;
+}
+
+.volumeBar .progressBar .progress {
+    background-color: white;
+    border-radius: 2px;
+    width: 0%;
+    height: 9px;
+}
+
+#navBarContainer {
+    background-color: black;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navBar {
+    background-color: transparent;
+    border: none;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.navBar .group {
+    padding: 10px 0;
+    border-top: 1px solid;
+}
+
+.navBar .navItem {
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.navItemLink {
+    text-decoration: none;
+    padding: 10px 0;
+    color: grey;
+}
+
+.navItemLink:hover {
+    color: white;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-top: 5px;
+}
+
+#mainViewContainer {
+    margin-left: 250px;
+    padding-bottom: 90px;
+    width: calc(100% - 250px);
+}
+
+#mainContent {
+    padding: 0 20px;
+}
+
+.gridViewItem {
+    display: inline-block;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 29%;
+    max-width: 200px;
+    min-width: 150px;
+}
+
+.gridViewItem img {
+    width: 100%;
+}
+
+.artworkInfo {
+    font-weight: 300;
+    text-align: center;
+    padding: 10px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gridViewItem a {
+    text-decoration: none;
+    color: white;
+}

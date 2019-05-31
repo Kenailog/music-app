@@ -1,0 +1,110 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#background {
+    background-color: black;
+    background-image: linear-gradient(to right bottom, rgb(11, 142, 24), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    /* background-image: url(../images/bg.jpg); */
+    background-position: center;
+    background-size: cover;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+#loginContainer * {
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-weight: normal;
+    color: white;
+    line-height: 1em;
+    box-sizing: border-box;
+}
+
+#loginContainer {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 1024px;
+}
+
+::placeholder {
+    color: lightgray;
+    font-size: 14px;
+}
+
+#inputContainer {
+    float: left;
+    padding: 45px;
+    width: 400px;
+    border-right: 1px solid white;
+}
+
+#inputContainer h2 {
+    text-align: center;
+}
+
+#inputContainer input[type="text"],
+input[type="password"],
+input[type="email"] {
+    display: block;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+
+#inputContainer button[type="submit"] {
+    background-color: rgb(0, 140, 0);
+    width: 100%;
+    border-radius: 250px;
+    border: 0;
+    height: 40px;
+    display: block;
+    font-size: 18px;
+    margin: 20px auto;
+    letter-spacing: 1px;
+    color: white;
+}
+
+#inputContainer button:hover {
+    background-color: rgb(0, 170, 0);
+    color: white;
+    cursor: pointer;
+}
+
+#inputContainer label {
+    margin-top: 10px;
+    font-size: 13px;
+    display: block;
+}
+
+.hasAccountText span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hasAccountText {
+    text-align: center;
+}
+
+#registerForm,
+#loginForm {
+    display: none;
+}
+
+#loginText {
+    padding: 45px;
+    display: table-cell;
+}
+
+#inputContainer .errorMessage {
+    color: red;
+    display: block;
+    font-size: 12px;
+}
