@@ -1,6 +1,5 @@
 <?php
 include("includes/header.php");
-include("includes/classes/Artist.php");
 
 
 if (!isset($_SESSION['logged'])) {
@@ -10,11 +9,29 @@ if (!isset($_SESSION['logged'])) {
 isset($_GET['id']) ? $album_id = htmlspecialchars($_GET['id']) : header("Location: index.php");
 
 $album_id = $conn->real_escape_string($album_id);
-$query = $conn->query("SELECT * FROM albums WHERE id = '$album_id'") or die($conn->error);
+$album = $conn->query("SELECT * FROM albums WHERE id = '$album_id'") or die($conn->error);
+$artist = $album->fetch_array();
 
-$artist_id = $query->fetch_array();
+$album = new Album($conn, $artist['id']);
+$artist = $album->getArtist();
 
-$artist = new Artist($conn, $artist_id['id']);
+?>
 
-echo $artist->getName();
+<div class="entityInfo">
+
+    <div class="leftSection">
+        <img src="<?php echo $album->getArtworkPath(); ?>" alt="album cover">
+    </div>
+
+    <div class="rightSection">
+        <h2><?php echo $album->getTitle(); ?></h2>
+        <p><?php echo $artist->getName(); ?></p>
+        <p><?php echo $album->getNumberOfSongs(); ?> Songs</p>
+    </div>
+
+</div>
+
+<?php
+
+
 include("includes/footer.php");

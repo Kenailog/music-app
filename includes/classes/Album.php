@@ -1,5 +1,4 @@
 <?php
-include("includes/classes/Artist.php");
 
 class Album
 {
@@ -42,5 +41,12 @@ class Album
     public function getArtworkPath()
     {
         return $this->artworkPath;
+    }
+
+    public function getNumberOfSongs()
+    {
+        $query = $this->conn->query("SELECT COUNT(*) FROM songs WHERE album = $this->id") or die($this->conn->error);
+        $result = $query->fetch_assoc();
+        return $result['COUNT(*)'];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 include('includes/config.php');
+include("includes/classes/Artist.php");
+include("includes/classes/Album.php");
 
 isset($_SESSION['logged']) ? $username = $_SESSION['logged'] : header("Location: register.php");
 
