@@ -13,6 +13,8 @@ isset($_SESSION['logged']) ? $username = $_SESSION['logged'] : header("Location:
 <head>
     <title>Main</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="assets/scripts/script.js"></script>
 </head>
 
 <body>

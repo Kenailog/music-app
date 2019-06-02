@@ -2,7 +2,6 @@
     <nav class="navBar">
         <a href="index.php" class="logo"><img src="assets/images/icons/logo.png" alt="logo"></a>
 
-
         <div class="group">
             <div class="navItem">
                 <a href="search.php" class="navItemLink">Search
@@ -21,7 +20,7 @@
             </div>
 
             <div class="navItem">
-                <a href="profile.php" class="navItemLink">Kenailog</a>
+                <a href="profile.php" class="navItemLink"><?= $username ?> </a>
             </div>
         </div>
     </nav>
