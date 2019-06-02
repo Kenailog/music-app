@@ -289,3 +289,81 @@ body {
     color: darkgrey;
     font-weight: 200;
 }
+
+.tracklist {
+    padding: 0;
+}
+
+.tracklistRow {
+    padding: 15px 10px;
+    list-style: none;
+    height: 40px;
+}
+
+.tracklistRow span {
+    font-weight: 200;
+    color: darkgrey;
+}
+
+.tracklistRow:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.tracklistRow .trackCount {
+    width: 8%;
+    float: left;
+}
+
+.tracklistRow .trackCount img {
+    visibility: hidden;
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+}
+
+.tracklistRow:hover .trackCount img {
+    visibility: visible;
+}
+
+.tracklistRow .trackCount span {
+    visibility: visible;
+}
+
+.tracklistRow:hover .trackCount span {
+    visibility: hidden;
+}
+
+.tracklistRow .trackOptions .optionsButton img {
+    visibility: hidden;
+    width: 15px;
+    cursor: pointer;
+}
+
+.tracklistRow:hover .trackOptions .optionsButton img {
+    visibility: visible;
+}
+
+.trackInfo {
+    width: 75%;
+    float: left;
+}
+
+.trackInfo span {
+    display: block;
+}
+
+.trackInfo .trackName {
+    color: white;
+}
+
+.tracklistRow .trackOptions {
+    float: left;
+    width: 5%;
+    text-align: right;
+}
+
+.tracklistRow .trackDuration {
+    width: 12%;
+    float: left;
+    text-align: right;
+}
