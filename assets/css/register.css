@@ -59,6 +59,12 @@ input[type="email"] {
     width: 100%;
 }
 
+#inputContainer input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border-bottom: 3px solid cornflowerblue;
+}
+
 #inputContainer button[type="submit"] {
     background-color: rgb(0, 140, 0);
     width: 100%;
