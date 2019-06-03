@@ -10,9 +10,13 @@ function formatTime(seconds) {
     return minutes + ':' + zero + seconds;
 }
 
-function updateProgressBar(audio) {
+function updateTimeProgressBar(audio) {
     var progress = (audio.currentTime / audio.duration) * 100;
     $('.playbackBar .progress').css('width', progress + '%');
+}
+
+function updateVolumeProgressBar(audio) {
+    $('.volumeBar .progress').css('width', audio.volume * 100 + '%');
 }
 
 function Audio() {
@@ -26,11 +30,19 @@ function Audio() {
     this.audio.addEventListener('timeupdate', function() {
         $('.progressTime.current').text(formatTime(this.currentTime));
         $('.progressTime.remaining').text(formatTime(this.duration - this.currentTime));
-        updateProgressBar(this);
+        updateTimeProgressBar(this);
     });
 
+    this.audio.addEventListener('volumechange', function() {
+        updateVolumeProgressBar(this);
+    })
+
     this.setTime = function(seconds) {
-        audioElement.audio.currentTime = seconds;
+        this.audio.currentTime = seconds;
+    }
+
+    this.setVolume = function(volume) {
+        this.audio.volume = volume;
     }
 
     this.setTrack = function(song) {

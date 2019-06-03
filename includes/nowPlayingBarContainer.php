@@ -15,6 +15,8 @@ $json_array = json_encode($array);
         currentPlaylist = <?= $json_array ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+        updateVolumeProgressBar(audioElement.audio);
+
 
         $(".playbackBar .progressBar").mousedown(function() {
             mouseDown = true;
@@ -22,12 +24,26 @@ $json_array = json_encode($array);
 
         $(".playbackBar .progressBar").mousemove(function(event) {
             if (mouseDown) {
-                calculateOffset(event, this);
+                calculateOffsetPlaybackBar(event, this);
             }
         });
 
         $(".playbackBar .progressBar").mouseup(function() {
-            calculateOffset(event, this);
+            calculateOffsetPlaybackBar(event, this);
+        });
+
+        $(".volumeBar .progressBar").mousedown(function() {
+            mouseDown = true;
+        });
+
+        $(".volumeBar .progressBar").mousemove(function(event) {
+            if (mouseDown) {
+                calculateOffsetVolumeBar(event, this);
+            }
+        });
+
+        $(".volumeBar .progressBar").mouseup(function() {
+            calculateOffsetVolumeBar(event, this);
         });
     });
 
@@ -35,11 +51,15 @@ $json_array = json_encode($array);
         mouseDown = false;
     });
 
-    function calculateOffset(mouse, progressBar) {
-        var percentage = mouse.offsetX / $(".progressBar").width() * 100;
+    function calculateOffsetPlaybackBar(mouse, progressBar) {
+        var percentage = mouse.offsetX / $(".playbackBar .progressBar").width() * 100;
         var seconds = audioElement.audio.duration * (percentage / 100);
         audioElement.setTime(seconds);
-        // $('.playbackBar .progress').css('width', percentage + '%');
+    }
+
+    function calculateOffsetVolumeBar(mouse, progressionBar) {
+        var percentage = mouse.offsetX / $(".volumeBar .progressBar").width();
+        audioElement.setVolume(percentage);
     }
 
     function setTrack(id, newPlaylist, play) {
