@@ -15,7 +15,32 @@ $json_array = json_encode($array);
         currentPlaylist = <?= $json_array ?>;
         audioElement = new Audio();
         setTrack(currentPlaylist[0], currentPlaylist, false);
+
+        $(".playbackBar .progressBar").mousedown(function() {
+            mouseDown = true;
+        });
+
+        $(".playbackBar .progressBar").mousemove(function(event) {
+            if (mouseDown) {
+                calculateOffset(event, this);
+            }
+        });
+
+        $(".playbackBar .progressBar").mouseup(function() {
+            calculateOffset(event, this);
+        });
     });
+
+    $(document).mouseup(function() {
+        mouseDown = false;
+    });
+
+    function calculateOffset(mouse, progressBar) {
+        var percentage = mouse.offsetX / $(".progressBar").width() * 100;
+        var seconds = audioElement.audio.duration * (percentage / 100);
+        audioElement.setTime(seconds);
+        // $('.playbackBar .progress').css('width', percentage + '%');
+    }
 
     function setTrack(id, newPlaylist, play) {
         $.post("includes/handlers/ajax/getSongJSON.php", {
