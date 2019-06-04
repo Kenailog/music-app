@@ -3,6 +3,7 @@ var songIndex;
 var audioElement;
 var mouseDown = false;
 var repeatMode = false;
+var shuffle = false;
 
 function formatTime(seconds) {
     var time = Math.round(seconds);
@@ -38,6 +39,10 @@ function Audio() {
     this.audio.addEventListener('volumechange', function() {
         updateVolumeProgressBar(this);
     })
+
+    this.audio.addEventListener('ended', function() {
+        nextSong();
+    });
 
     this.setTime = function(seconds) {
         this.audio.currentTime = seconds;

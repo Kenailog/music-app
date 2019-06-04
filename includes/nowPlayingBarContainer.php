@@ -60,6 +60,14 @@ $json_array = json_encode($array);
             playSong();
             return;
         }
+
+        if (shuffle) {
+            var randomIndex = Math.floor(Math.random() * currentPlaylist.length);
+            songIndex = randomIndex;
+            setTrack(currentPlaylist[randomIndex], currentPlaylist, true);
+            playSong();
+            return;
+        }
         songIndex = songIndex == currentPlaylist.length - 1 ? 0 : songIndex + 1;
         setTrack(currentPlaylist[songIndex], currentPlaylist, true);
     }
@@ -69,10 +77,22 @@ $json_array = json_encode($array);
         setTrack(currentPlaylist[songIndex], currentPlaylist, true);
     }
 
-    function repeat() {
+    function setMute() {
+        audioElement.audio.muted = !audioElement.audio.muted;
+        var volumeImage = audioElement.audio.muted ? "volume-mute.png" : "volume.png";
+        $(".controlButton.volume img").attr("src", "assets/images/icons/" + volumeImage);
+    }
+
+    function setRepeat() {
         repeatMode = !repeatMode;
         var repeatImage = repeatMode ? "repeat-active.png" : "repeat.png";
         $(".controlButton.repeat img").attr("src", "assets/images/icons/" + repeatImage);
+    }
+
+    function setShuffle() {
+        shuffle = !shuffle;
+        var shuffleImage = shuffle ? "shuffle-active.png" : "shuffle.png";
+        $(".controlButton.shuffle img").attr("src", "assets/images/icons/" + shuffleImage);
     }
 
     function calculateOffsetPlaybackBar(mouse, progressBar) {
@@ -89,10 +109,11 @@ $json_array = json_encode($array);
     }
 
     function setTrack(id, newPlaylist, play) {
+        songIndex = currentPlaylist.indexOf(id);
+
         $.post("includes/handlers/ajax/getSongJSON.php", {
             songId: id
         }, function(data) {
-            songIndex = currentPlaylist.indexOf(id);
             var song = JSON.parse(data);
             $(".trackName span").text(song.title);
 
@@ -110,7 +131,6 @@ $json_array = json_encode($array);
                 $(".albumLink img").attr("src", album.artworkPath);
             });
 
-            console.log(song);
             audioElement.setTrack(song);
             if (play) {
                 playSong();
@@ -135,10 +155,6 @@ $json_array = json_encode($array);
         $(".controlButton.pause").hide();
         audioElement.pause();
     }
-
-    function muteVolume() {
-        audioElement.setVolume(0);
-    }
 </script>
 
 <div id="nowPlayingBarContainer">
@@ -162,7 +178,7 @@ $json_array = json_encode($array);
         <div id="middle">
             <div class="content playerControls">
                 <div class="buttons">
-                    <button class="controlButton shuffle" title="shuffle">
+                    <button class="controlButton shuffle" title="shuffle" onclick="setShuffle()">
                         <img src="assets/images/icons/shuffle.png" alt="shuffle">
                     </button>
 
@@ -182,7 +198,7 @@ $json_array = json_encode($array);
                         <img src="assets/images/icons/next.png" alt="next">
                     </button>
 
-                    <button class="controlButton repeat" title="repeat" onclick="repeat()">
+                    <button class="controlButton repeat" title="repeat" onclick="setRepeat()">
                         <img src="assets/images/icons/repeat.png" alt="repeat">
                     </button>
                 </div>
@@ -202,8 +218,8 @@ $json_array = json_encode($array);
 
         <div id="right">
             <div class="volumeBar">
-                <button class="controlButton volume" title="Volume button" onclick="muteVolume()">
-                    <img src="assets/images/icons/volume.png" alt="">
+                <button class="controlButton volume" title="Volume button" onclick="setMute()">
+                    <img src="assets/images/icons/volume.png" alt="volume">
                 </button>
 
                 <div class="progressBar">
