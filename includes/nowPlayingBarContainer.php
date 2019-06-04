@@ -55,6 +55,11 @@ $json_array = json_encode($array);
     });
 
     function nextSong() {
+        if (repeatMode) {
+            audioElement.setTime(0);
+            playSong();
+            return;
+        }
         songIndex = songIndex == currentPlaylist.length - 1 ? 0 : songIndex + 1;
         setTrack(currentPlaylist[songIndex], currentPlaylist, true);
     }
@@ -64,8 +69,10 @@ $json_array = json_encode($array);
         setTrack(currentPlaylist[songIndex], currentPlaylist, true);
     }
 
-    function toogleRepeat() {
-        repeat = !repeat;
+    function repeat() {
+        repeatMode = !repeatMode;
+        var repeatImage = repeatMode ? "repeat-active.png" : "repeat.png";
+        $(".controlButton.repeat img").attr("src", "assets/images/icons/" + repeatImage);
     }
 
     function calculateOffsetPlaybackBar(mouse, progressBar) {
@@ -175,7 +182,7 @@ $json_array = json_encode($array);
                         <img src="assets/images/icons/next.png" alt="next">
                     </button>
 
-                    <button class="controlButton repeat" title="repeat">
+                    <button class="controlButton repeat" title="repeat" onclick="repeat()">
                         <img src="assets/images/icons/repeat.png" alt="repeat">
                     </button>
                 </div>
