@@ -109,6 +109,7 @@ $json_array = json_encode($array);
     }
 
     function setTrack(id, newPlaylist, play) {
+        currentPlaylist = newPlaylist;
         songIndex = currentPlaylist.indexOf(id);
 
         $.post("includes/handlers/ajax/getSongJSON.php", {

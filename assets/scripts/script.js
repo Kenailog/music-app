@@ -1,4 +1,5 @@
 var currentPlaylist = [];
+var tempPlaylist = [];
 var songIndex;
 var audioElement;
 var mouseDown = false;
@@ -9,7 +10,7 @@ function formatTime(seconds) {
     var time = Math.round(seconds);
     var minutes = Math.floor(time / 60);
     var seconds = time - minutes * 60;
-    var zero = seconds < 9 ? "0" : "";
+    var zero = seconds < 10 ? "0" : "";
     return minutes + ':' + zero + seconds;
 }
 
