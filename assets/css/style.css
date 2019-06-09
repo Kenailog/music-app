@@ -408,3 +408,31 @@ body {
 .tracklistContainer h2 {
     text-align: center;
 }
+
+[role="link"] {
+    cursor: pointer;
+}
+
+.searchContainer {
+    background-color: rgb(70, 70, 70);
+    padding: 20px 20px;
+}
+
+.searchContainer h3 {
+    font-weight: 300;
+    margin: 0;
+}
+
+.searchContainer .searchInput {
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: white;
+}
+
+input:focus {
+    outline: none;
+}
