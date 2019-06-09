@@ -33,6 +33,10 @@ function updateVolumeProgressBar(audio) {
     $('.volumeBar .progress').css('width', audio.volume * 100 + '%');
 }
 
+function playFirstSong() {
+    setTrack(tempPlaylist[0], tempPlaylist, true);
+}
+
 function Audio() {
     this.audio = document.createElement("audio");
     this.currentlyPlaying;

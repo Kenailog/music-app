@@ -372,3 +372,39 @@ body {
     float: left;
     text-align: right;
 }
+
+.entityInfo .centerSection {
+    text-align: center;
+}
+
+.entityInfo .button {
+    letter-spacing: 2px;
+    border: none;
+    background-color: transparent;
+    width: 8%;
+    height: 8%;
+    border-radius: 200px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 15px;
+    min-width: 130px;
+    color: white;
+}
+
+.entityInfo .button.green {
+    background-color: green;
+}
+
+.entityInfo .button:hover {
+    background-color: greenyellow;
+}
+
+.borderBottom {
+    border-bottom: 1px solid darkgrey;
+    margin-bottom: 15px;
+}
+
+.gridViewContainer h2,
+.tracklistContainer h2 {
+    text-align: center;
+}

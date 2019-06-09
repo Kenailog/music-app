@@ -17,4 +17,13 @@ class Artist
         $row = $query->fetch_array();
         return $row['name'];
     }
+
+    public function getSongsIds()
+    {
+        $query = $this->conn->query("SELECT id FROM songs WHERE artist = '$this->id' ORDER BY plays ASC") or die($this->conn->error);
+        while($row = $query->fetch_assoc()) {
+            $songs[] = $row['id']; 
+        }
+        return $songs;
+    }
 }
