@@ -8,10 +8,10 @@ if (!isset($_SESSION['logged'])) {
 isset($_GET['id']) ? $album_id = htmlspecialchars($_GET['id']) : header("Location: index.php");
 
 $album_id = $conn->real_escape_string($album_id);
-$album = $conn->query("SELECT * FROM albums WHERE id = '$album_id'") or die($conn->error);
-$artist = $album->fetch_array();
+$result = $conn->query("SELECT * FROM albums WHERE id = '$album_id'") or die($conn->error);
+$album = $result->fetch_array();
 
-$album = new Album($conn, $artist['id']);
+$album = new Album($conn, $album['id']);
 $artist = $album->getArtist();
 
 ?>
