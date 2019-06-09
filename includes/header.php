@@ -1,11 +1,11 @@
 <?php
-include('includes/config.php');
-include("includes/classes/Artist.php");
-include("includes/classes/Album.php");
-include("includes/classes/Song.php");
+include_once('includes/config.php');
+include_once("includes/classes/Artist.php");
+include_once("includes/classes/Album.php");
+include_once("includes/classes/Song.php");
 
 isset($_SESSION['logged']) ? $username = $_SESSION['logged'] : header("Location: register.php");
-
+echo "<script>username = '$username'</script>";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ isset($_SESSION['logged']) ? $username = $_SESSION['logged'] : header("Location:
     <div id="mainContainer">
 
         <div id="topContainer">
-            <?php include("includes/navBarContainer.php"); ?>
+            <?php include_once("includes/navBarContainer.php"); ?>
 
             <div id="mainViewContainer">
                 <div id="mainContent">

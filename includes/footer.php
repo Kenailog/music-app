@@ -1,7 +1,7 @@
 </div>
 </div>
 </div>
-<?php include("includes/nowPlayingBarContainer.php"); ?>
+<?php include_once("includes/nowPlayingBarContainer.php"); ?>
 </div>
 </body>
 

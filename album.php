@@ -1,5 +1,5 @@
 <?php
-include("includes/header.php");
+include_once("includes/includedFiles.php");
 
 if (!isset($_SESSION['logged'])) {
     header("Location: register.php");
@@ -71,8 +71,3 @@ $artist = $album->getArtist();
 
     </ul>
 </div>
-
-<?php
-
-
-include("includes/footer.php");

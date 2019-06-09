@@ -5,6 +5,16 @@ var audioElement;
 var mouseDown = false;
 var repeatMode = false;
 var shuffle = false;
+var username;
+
+function loadContent(url) {
+    if (url.indexOf("?") == -1) {
+        url += "?";
+    }
+    $('#mainContent').load(encodeURI(url + "&username=" + username));
+    $('body').scroll(0);
+    history.pushState(null, null, url);
+}
 
 function formatTime(seconds) {
     var time = Math.round(seconds);
