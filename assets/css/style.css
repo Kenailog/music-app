@@ -115,11 +115,6 @@ body {
     float: left;
 }
 
-.trackInfo {
-    display: table;
-    margin-top: 7px;
-}
-
 .trackInfo .artistName {
     color: grey;
     display: inline-block;
@@ -351,6 +346,7 @@ body {
 .trackInfo {
     width: 75%;
     float: left;
+    display: table;
 }
 
 .trackInfo span {
@@ -405,7 +401,8 @@ body {
 }
 
 .gridViewContainer h2,
-.tracklistContainer h2 {
+.tracklistContainer h2,
+.artistsContainer h2 {
     text-align: center;
 }
 
@@ -435,4 +432,13 @@ body {
 
 input:focus {
     outline: none;
+}
+
+.searchResultRow {
+    padding: 10px 15px;
+}
+
+.noResult {
+    display: block;
+    margin: 15px;
 }

@@ -14,8 +14,6 @@ $search = htmlspecialchars($search);
 <script>
     $(".searchInput").focus();
     $(function() {
-        var timer;
-
         $(".searchInput").keyup(function() {
             clearTimeout(timer);
             timer = setTimeout(function() {
@@ -26,12 +24,18 @@ $search = htmlspecialchars($search);
     })
 </script>
 
+<?php
+if ($search === "") {
+    return;
+}
+?>
+
 <div class="tracklistContainer borderBottom">
     <h2>Songs</h2>
     <ul class="tracklist">
 
         <?php
-        $query = $conn->query("SELECT id FROM songs WHERE title LIKE '$search%' LIMIT 10") or die($conn->error);
+        $query = $conn->query("SELECT id FROM songs WHERE title LIKE '%$search%' LIMIT 10") or die($conn->error);
 
         if ($query->num_rows == 0) {
             echo "<span class='noResult'>No matches found</span>";
@@ -80,6 +84,47 @@ $search = htmlspecialchars($search);
     </ul>
 </div>
 
-<div class="artistsContainer borderBottom">\
+<div class="artistsContainer borderBottom">
+    <h2>Artists</h2>
+
+    <?php
+    $query = $conn->query("SELECT id FROM artists WHERE name LIKE '%$search%' LIMIT 10") or die($conn->error);
+
+    if ($query->num_rows == 0) {
+        echo "<span class='noResult'>No matches found</span>";
+    }
+
+    while ($row = $query->fetch_assoc()) {
+        $artist = new Artist($conn, $row['id']);
+
+        ?>
+        <div class="searchResultRow">
+            <div class="artistName">
+                <span role="link" tabindex="0" onclick='loadContent("artist.php?id=<?php echo $row["id"]; ?>")'><?php echo $artist->getName(); ?></span>
+            </div>
+        </div>
+    <?php
+}
+?>
+</div>
+
+<div class="gridViewContainer">
+    <h2>Albums</h2>
+    <?php
+    $albums = $conn->query("SELECT * FROM albums WHERE title LIKE '%$search%'") or die($conn->error);
+
+    if ($albums->num_rows == 0) {
+        echo "<span class='noResult'>No matches found</span>";
+    }
+
+    while ($row = $albums->fetch_array()) {
+        echo " <div class='gridViewItem'>
+         <span role='link' tabindex ='0' onclick='loadContent(\"album.php?id=" . $row['id'] . "\") '>
+         <img src =" . $row['artworkPath'] . " alt ='cover'>
+         <div class='artworkInfo'>" . $row['title'] . " </div>
+          </span>
+          </div>";
+    }
+    ?>
 
 </div>

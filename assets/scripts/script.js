@@ -6,8 +6,13 @@ var mouseDown = false;
 var repeatMode = false;
 var shuffle = false;
 var username;
+var timer;
 
 function loadContent(url) {
+    if (timer != NULL) {
+        clearTimeout(timer);
+    }
+
     if (url.indexOf("?") == -1) {
         url += "?";
     }

@@ -122,15 +122,15 @@ $json_array = json_encode($array);
                 artistId: song.artist
             }, function(data) {
                 var artist = JSON.parse(data);
-                $(".artistName span").text(artist.name).attr("onclick", "loadContent('artist.php?id=" + artist.id + "')");
+                $(".trackInfo .artistName span").text(artist.name).attr("onclick", "loadContent('artist.php?id=" + artist.id + "')");
             });
 
             $.post("includes/handlers/ajax/getAlbumJSON.php", {
                 albumId: song.album
             }, function(data) {
                 var album = JSON.parse(data);
-                $(".albumLink img").attr("src", album.artworkPath).attr("onclick", "loadContent('album.php?id=" + album.id + "')");
-                $(".trackName span").attr("src", album.artworkPath).attr("onclick", "loadContent('album.php?id=" + album.id + "')");
+                $(".content .albumLink img").attr("src", album.artworkPath).attr("onclick", "loadContent('album.php?id=" + album.id + "')");
+                $(".trackInfo .trackName span").attr("src", album.artworkPath).attr("onclick", "loadContent('album.php?id=" + album.id + "')");
             });
 
             audioElement.setTrack(song);
@@ -163,17 +163,19 @@ $json_array = json_encode($array);
     <div id="nowPlayingBar">
 
         <div id="left">
-            <span class="albumLink">
-                <img src="" alt="Album art" role="link" tabindex="0">
-            </span>
+            <div class="content">
+                <span class="albumLink">
+                    <img src="" alt="Album art" role="link" tabindex="0">
+                </span>
 
-            <div class="trackInfo">
-                <span class="trackName">
-                    <span role="link" tabindex="0"></span>
-                </span>
-                <span class="artistName" role="link" tabindex="0">
-                    <span></span>
-                </span>
+                <div class="trackInfo">
+                    <span class="trackName">
+                        <span role="link" tabindex="0"></span>
+                    </span>
+                    <span class="artistName" role="link" tabindex="0">
+                        <span></span>
+                    </span>
+                </div>
             </div>
         </div>
 

@@ -53,8 +53,8 @@ class Album
     public function getSongsIds()
     {
         $query = $this->conn->query("SELECT id FROM songs WHERE album = '$this->id' ORDER BY albumOrder ASC") or die($this->conn->error);
-        while($row = $query->fetch_assoc()) {
-            $songs[] = $row['id']; 
+        while ($row = $query->fetch_assoc()) {
+            $songs[] = $row['id'];
         }
         return $songs;
     }
