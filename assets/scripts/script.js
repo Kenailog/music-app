@@ -8,8 +8,14 @@ var shuffle = false;
 var username;
 var timer;
 
+function logout() {
+    $.post("includes/handlers/ajax/logout.php", function() {
+        location.reload();
+    })
+}
+
 function loadContent(url) {
-    if (timer != NULL) {
+    if (timer != null) {
         clearTimeout(timer);
     }
 

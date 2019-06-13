@@ -7,7 +7,7 @@ body {
 }
 
 body {
-    background-image: linear-gradient(to right bottom, rgb(142, 11, 24), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    background-color: rgb(60, 60, 60);
     min-width: 720px;
     font-size: 14px;
 }
@@ -376,7 +376,7 @@ body {
 .entityInfo .button {
     letter-spacing: 2px;
     border: none;
-    background-color: transparent;
+    background-color: green;
     width: 8%;
     height: 8%;
     border-radius: 200px;
