@@ -27,6 +27,10 @@ function loadContent(url) {
     history.pushState(null, null, url);
 }
 
+window.onpopstate = function() {
+    loadContent(window.location.href);
+}
+
 function formatTime(seconds) {
     var time = Math.round(seconds);
     var minutes = Math.floor(time / 60);
