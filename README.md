@@ -1,4 +1,4 @@
-# music-app WORK IN PROGRESS
+# music-app
 This app lets you play music.
 
 Key features:
